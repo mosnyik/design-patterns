@@ -1,4 +1,7 @@
 import iterator.BrowseHistory;
+import iterator.Iterator;
+import iterator.exercise.Product;
+import iterator.exercise.ProductCollection;
 import state.exercise.*;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
@@ -123,17 +126,39 @@ public class Main {
 //        // handle get direction for Bicycling
 //        ds.getDirection();
 
-        // iterator pattern
-        var history = new BrowseHistory();
+//        // iterator pattern
+//        var history = new BrowseHistory();
+//
+//        history.push("a");
+//        history.push("b");
+//        history.push("c");
+//        history.push("d");
+//
+//        Iterator iterator = history.createIterator();
+//        while(iterator.hasNext()){
+//            var url = iterator.current();
+//            System.out.println(url);
+//            iterator.next();
+//        }
 
-        history.push("a");
-        history.push("b");
-        history.push("c");
-        history.push("d");
+        // iterator pattern Exercise
+        var productCollection = new ProductCollection();
 
-        for (int i = 0; i < history.getUrls().size(); i++) {
-            var url =  history.getUrls().get(i);
-            System.out.println(url);
+        var rice = new Product(1, "rice");
+        var beans = new Product(2, "beans");
+        var yam = new Product(3, "yam");
+
+        productCollection.add(rice);
+        productCollection.add(beans);
+        productCollection.add(yam);
+
+iterator.exercise.Iterator iterator = productCollection.createIterator();
+
+
+        while(!iterator.isDone()){
+            Product product = iterator.currentProduct();
+            System.out.println(product);
+            iterator.nextProduct();
         }
 
     }
